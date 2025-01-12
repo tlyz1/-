@@ -1,0 +1,316 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`order_no`",
+              "`order_id`",
+              "`sale_store_no`",
+              "`store_no`",
+              "`store_name`",
+              "`trade_date`",
+              "`pay_date`",
+              "`deal_date`",
+              "`pos_no`",
+              "`ser_id`",
+              "`trade_id`",
+              "`parent_order_sn`",
+              "`source_order_sn`",
+              "`source_type`",
+              "`cashier_no`",
+              "`cashier_name`",
+              "`sales_clerk_no`",
+              "`member_type`",
+              "`member_name`",
+              "`member_id`",
+              "`member_channel`",
+              "`card_no`",
+              "`business_code`",
+              "`goods_no`",
+              "`goods_name`",
+              "`channel_goods_no`",
+              "`unit`",
+              "`spec`",
+              "`init_price`",
+              "`sale_price`",
+              "`price`",
+              "`cost_price`",
+              "`item`",
+              "`trade_mode_id`",
+              "`is_daily_clear`",
+              "`sale_cost`",
+              "`sale_qty`",
+              "`sale_amount`",
+              "`dis_amount`",
+              "`vendor_id`",
+              "`vendor_name`",
+              "`contract_no`",
+              "`batch_no`",
+              "`combination_flag`",
+              "`sort`",
+              "`offset_flag`",
+              "`commission_amount`",
+              "`share_user_id`",
+              "`tag`",
+              "`first_share_id`",
+              "`shipping_type`",
+              "`create_time`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "store_sale_dtl"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_store_sale_dtl_i_temp",
+            "fileName": "ods_sale_store_sale_dtl_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": "，",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "order_no",
+                "type": "string"
+              },
+              {
+                "name": "order_id",
+                "type": "bigint"
+              },
+              {
+                "name": "sale_store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_name",
+                "type": "string"
+              },
+              {
+                "name": "trade_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "pay_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "deal_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "pos_no",
+                "type": "string"
+              },
+              {
+                "name": "ser_id",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_id",
+                "type": "bigint"
+              },
+              {
+                "name": "parent_order_sn",
+                "type": "string"
+              },
+              {
+                "name": "source_order_sn",
+                "type": "string"
+              },
+              {
+                "name": "source_type",
+                "type": "bigint"
+              },
+              {
+                "name": "cashier_no",
+                "type": "string"
+              },
+              {
+                "name": "cashier_name",
+                "type": "string"
+              },
+              {
+                "name": "sales_clerk_no",
+                "type": "string"
+              },
+              {
+                "name": "member_type",
+                "type": "bigint"
+              },
+              {
+                "name": "member_name",
+                "type": "string"
+              },
+              {
+                "name": "member_id",
+                "type": "string"
+              },
+              {
+                "name": "member_channel",
+                "type": "bigint"
+              },
+              {
+                "name": "card_no",
+                "type": "string"
+              },
+              {
+                "name": "business_code",
+                "type": "string"
+              },
+              {
+                "name": "goods_no",
+                "type": "string"
+              },
+              {
+                "name": "goods_name",
+                "type": "string"
+              },
+              {
+                "name": "channel_goods_no",
+                "type": "string"
+              },
+              {
+                "name": "unit",
+                "type": "string"
+              },
+              {
+                "name": "spec",
+                "type": "string"
+              },
+              {
+                "name": "init_price",
+                "type": "double"
+              },
+              {
+                "name": "sale_price",
+                "type": "double"
+              },
+              {
+                "name": "price",
+                "type": "double"
+              },
+              {
+                "name": "cost_price",
+                "type": "double"
+              },
+              {
+                "name": "item",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_mode_id",
+                "type": "bigint"
+              },
+              {
+                "name": "is_daily_clear",
+                "type": "bigint"
+              },
+              {
+                "name": "sale_cost",
+                "type": "double"
+              },
+              {
+                "name": "sale_qty",
+                "type": "double"
+              },
+              {
+                "name": "sale_amount",
+                "type": "double"
+              },
+              {
+                "name": "dis_amount",
+                "type": "double"
+              },
+              {
+                "name": "vendor_id",
+                "type": "bigint"
+              },
+              {
+                "name": "vendor_name",
+                "type": "string"
+              },
+              {
+                "name": "contract_no",
+                "type": "string"
+              },
+              {
+                "name": "batch_no",
+                "type": "string"
+              },
+              {
+                "name": "combination_flag",
+                "type": "bigint"
+              },
+              {
+                "name": "sort",
+                "type": "bigint"
+              },
+              {
+                "name": "offset_flag",
+                "type": "bigint"
+              },
+              {
+                "name": "commission_amount",
+                "type": "double"
+              },
+              {
+                "name": "share_user_id",
+                "type": "string"
+              },
+              {
+                "name": "tag",
+                "type": "bigint"
+              },
+              {
+                "name": "first_share_id",
+                "type": "string"
+              },
+              {
+                "name": "shipping_type",
+                "type": "bigint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

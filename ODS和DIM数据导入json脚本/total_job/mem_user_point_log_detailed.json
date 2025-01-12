@@ -1,0 +1,111 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`zt_id`",
+              "`business_id`",
+              "`business_params`",
+              "`subject_id`",
+              "`occupy_subject_id`",
+              "`point_a`",
+              "`point_c`",
+              "`change_type`",
+              "`created_time`",
+              "`updated_time`",
+              "`is_deleted`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_point_log_detailed"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/member"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_mem_user_point_log_detailed_i_temp",
+            "fileName": "ods_mem_user_point_log_detailed_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "zt_id",
+                "type": "bigint"
+              },
+              {
+                "name": "business_id",
+                "type": "bigint"
+              },
+              {
+                "name": "business_params",
+                "type": "string"
+              },
+              {
+                "name": "subject_id",
+                "type": "bigint"
+              },
+              {
+                "name": "occupy_subject_id",
+                "type": "bigint"
+              },
+              {
+                "name": "point_a",
+                "type": "bigint"
+              },
+              {
+                "name": "point_c",
+                "type": "bigint"
+              },
+              {
+                "name": "change_type",
+                "type": "bigint"
+              },
+              {
+                "name": "created_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "updated_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "is_deleted",
+                "type": "bigint"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

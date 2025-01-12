@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`trade_order_id`",
+              "`pay_order_id`",
+              "`refund_order_id`",
+              "`convert_id`",
+              "`clear_store_amount_id`",
+              "`member_id`",
+              "`zt_id`",
+              "`amount`",
+              "`record_type`",
+              "`create_time`",
+              "`update_time`",
+              "`trade_date`",
+              "`store_no`",
+              "`pos_no`",
+              "`left_store_amount`",
+              "`trade_source`",
+              "`city_id`",
+              "`pay_channel`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "store_amount_record"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/member"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_mem_store_amount_record_i_temp",
+            "fileName": "ods_mem_store_amount_record_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_order_id",
+                "type": "string"
+              },
+              {
+                "name": "pay_order_id",
+                "type": "string"
+              },
+              {
+                "name": "refund_order_id",
+                "type": "string"
+              },
+              {
+                "name": "convert_id",
+                "type": "bigint"
+              },
+              {
+                "name": "clear_store_amount_id",
+                "type": "bigint"
+              },
+              {
+                "name": "member_id",
+                "type": "bigint"
+              },
+              {
+                "name": "zt_id",
+                "type": "bigint"
+              },
+              {
+                "name": "amount",
+                "type": "double"
+              },
+              {
+                "name": "record_type",
+                "type": "bigint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "trade_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "pos_no",
+                "type": "string"
+              },
+              {
+                "name": "left_store_amount",
+                "type": "double"
+              },
+              {
+                "name": "trade_source",
+                "type": "bigint"
+              },
+              {
+                "name": "city_id",
+                "type": "bigint"
+              },
+              {
+                "name": "pay_channel",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`zt_id`",
+              "`subject_id`",
+              "`point_t0`",
+              "`point_t1`",
+              "`frozen_point`",
+              "`created_time`",
+              "`updated_time`",
+              "`is_deleted`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "user_point_detailed"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/member"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://192.168.88.80:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_mem_user_point_detailed_i_temp",
+            "fileName": "ods_mem_user_point_detailed_i_temp",
+            "writeMode": "append",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "zt_id",
+                "type": "bigint"
+              },
+              {
+                "name": "subject_id",
+                "type": "bigint"
+              },
+              {
+                "name": "point_t0",
+                "type": "bigint"
+              },
+              {
+                "name": "point_t1",
+                "type": "bigint"
+              },
+              {
+                "name": "frozen_point",
+                "type": "bigint"
+              },
+              {
+                "name": "created_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "updated_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "is_deleted",
+                "type": "bigint"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

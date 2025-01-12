@@ -1,0 +1,186 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`zt_id`",
+              "`member_id`",
+              "`user_id`",
+              "`card_no`",
+              "`member_name`",
+              "`mobile`",
+              "`user_email`",
+              "`sex`",
+              "`birthday_date`",
+              "`address`",
+              "`reg_time`",
+              "`reg_md`",
+              "`bind_md`",
+              "`flag`",
+              "`is_black`",
+              "`user_state`",
+              "`user_type`",
+              "`member_type`",
+              "`member_status`",
+              "`expired_time`",
+              "`user_source`",
+              "`member_level`",
+              "`growth`",
+              "`invite_member_id`",
+              "`invite_type`",
+              "`register_store_leader_id`",
+			  "`last_update_time`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "member_union"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/member"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_mem_member_union_i_temp",
+            "fileName": "ods_mem_member_union_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "zt_id",
+                "type": "bigint"
+              },
+              {
+                "name": "member_id",
+                "type": "bigint"
+              },
+              {
+                "name": "user_id",
+                "type": "bigint"
+              },
+              {
+                "name": "card_no",
+                "type": "string"
+              },
+              {
+                "name": "member_name",
+                "type": "string"
+              },
+              {
+                "name": "mobile",
+                "type": "string"
+              },
+              {
+                "name": "user_email",
+                "type": "string"
+              },
+              {
+                "name": "sex",
+                "type": "bigint"
+              },
+              {
+                "name": "birthday_date",
+                "type": "string"
+              },
+              {
+                "name": "address",
+                "type": "string"
+              },
+              {
+                "name": "reg_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "reg_md",
+                "type": "string"
+              },
+              {
+                "name": "bind_md",
+                "type": "string"
+              },
+              {
+                "name": "flag",
+                "type": "bigint"
+              },
+              {
+                "name": "is_black",
+                "type": "bigint"
+              },
+              {
+                "name": "user_state",
+                "type": "bigint"
+              },
+              {
+                "name": "user_type",
+                "type": "string"
+              },
+              {
+                "name": "member_type",
+                "type": "bigint"
+              },
+              {
+                "name": "member_status",
+                "type": "bigint"
+              },
+              {
+                "name": "expired_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "user_source",
+                "type": "bigint"
+              },
+              {
+                "name": "member_level",
+                "type": "bigint"
+              },
+              {
+                "name": "growth",
+                "type": "bigint"
+              },
+              {
+                "name": "invite_member_id",
+                "type": "bigint"
+              },
+              {
+                "name": "invite_type",
+                "type": "bigint"
+              },
+              {
+                "name": "register_store_leader_id",
+                "type": "bigint"
+              },
+			  {
+                "name": "last_update_time",
+                "type": "timestamp"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

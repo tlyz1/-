@@ -1,0 +1,201 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`order_no`",
+              "`order_id`",
+              "`sale_store_no`",
+              "`store_no`",
+              "`store_name`",
+              "`trade_date`",
+              "`pay_date`",
+              "`deal_date`",
+              "`pos_no`",
+              "`ser_id`",
+              "`trade_id`",
+              "`parent_order_sn`",
+              "`source_order_sn`",
+              "`source_type`",
+              "`cashier_no`",
+              "`cashier_name`",
+              "`sale_amount`",
+              "`total_pay_amount`",
+              "`total_dis_amount`",
+              "`round_amount`",
+              "`member_type`",
+              "`member_name`",
+              "`member_center_sn`",
+              "`member_id`",
+              "`member_channel`",
+              "`card_no`",
+              "`business_code`",
+              "`create_time`",
+              "`last_update_time`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "store_sale_info"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_store_sale_info_i_temp",
+            "fileName": "ods_sale_store_sale_info_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "order_no",
+                "type": "string"
+              },
+              {
+                "name": "order_id",
+                "type": "bigint"
+              },
+              {
+                "name": "sale_store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_name",
+                "type": "string"
+              },
+              {
+                "name": "trade_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "pay_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "deal_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "pos_no",
+                "type": "string"
+              },
+              {
+                "name": "ser_id",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_id",
+                "type": "bigint"
+              },
+              {
+                "name": "parent_order_sn",
+                "type": "string"
+              },
+              {
+                "name": "source_order_sn",
+                "type": "string"
+              },
+              {
+                "name": "source_type",
+                "type": "bigint"
+              },
+              {
+                "name": "cashier_no",
+                "type": "string"
+              },
+              {
+                "name": "cashier_name",
+                "type": "string"
+              },
+              {
+                "name": "sale_amount",
+                "type": "double"
+              },
+              {
+                "name": "total_pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "total_dis_amount",
+                "type": "double"
+              },
+              {
+                "name": "round_amount",
+                "type": "double"
+              },
+              {
+                "name": "member_type",
+                "type": "bigint"
+              },
+              {
+                "name": "member_name",
+                "type": "string"
+              },
+              {
+                "name": "member_center_sn",
+                "type": "string"
+              },
+              {
+                "name": "member_id",
+                "type": "bigint"
+              },
+              {
+                "name": "member_channel",
+                "type": "bigint"
+              },
+              {
+                "name": "card_no",
+                "type": "string"
+              },
+              {
+                "name": "business_code",
+                "type": "string"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "last_update_time",
+                "type": "timestamp"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

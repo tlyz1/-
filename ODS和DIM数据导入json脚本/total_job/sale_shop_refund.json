@@ -1,0 +1,186 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`refund_no`",
+              "`refund_status`",
+              "`refund_code`",
+              "`refund_msg`",
+              "`refund_desc`",
+              "`create_time`",
+              "`update_time`",
+              "`cancel_time`",
+              "`refund_amount`",
+              "`refund_point_amount`",
+              "`return_pay_point`",
+              "`return_point_amount`",
+              "`refund_time`",
+              "`less_weight`",
+              "`pick_weight`",
+              "`is_deleted`",
+              "`refund_type`",
+              "`order_no`",
+              "`refund_apply_type`",
+              "`refund_delivery`",
+              "`sync_erp_status`",
+              "`sync_erp_msg`",
+              "`create_sys_user_id`",
+              "`create_sys_user_name`",
+              "`store_no`",
+              "`store_leader_id`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "shop_refund"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_shop_refund_i_temp",
+            "fileName": "ods_sale_shop_refund_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_no",
+                "type": "string"
+              },
+              {
+                "name": "refund_status",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_code",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_msg",
+                "type": "string"
+              },
+              {
+                "name": "refund_desc",
+                "type": "string"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "cancel_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "refund_amount",
+                "type": "double"
+              },
+              {
+                "name": "refund_point_amount",
+                "type": "double"
+              },
+              {
+                "name": "return_pay_point",
+                "type": "bigint"
+              },
+              {
+                "name": "return_point_amount",
+                "type": "double"
+              },
+              {
+                "name": "refund_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "less_weight",
+                "type": "double"
+              },
+              {
+                "name": "pick_weight",
+                "type": "double"
+              },
+              {
+                "name": "is_deleted",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_type",
+                "type": "bigint"
+              },
+              {
+                "name": "order_no",
+                "type": "string"
+              },
+              {
+                "name": "refund_apply_type",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_delivery",
+                "type": "double"
+              },
+              {
+                "name": "sync_erp_status",
+                "type": "bigint"
+              },
+              {
+                "name": "sync_erp_msg",
+                "type": "string"
+              },
+              {
+                "name": "create_sys_user_id",
+                "type": "bigint"
+              },
+              {
+                "name": "create_sys_user_name",
+                "type": "string"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_leader_id",
+                "type": "bigint"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`refund_no`",
+              "`goods_no`",
+              "`less_weight`",
+              "`pick_weight`",
+              "`goods_name`",
+              "`quantity`",
+              "`qty`",
+              "`amount`",
+              "`cost`",
+              "`create_time`",
+              "`update_time`",
+              "`activity_plat_city_goods_id`",
+              "`activity_type`",
+              "`order_item_id`",
+              "`trade_mode_id`",
+              "`vendor_id`",
+              "`contract_no`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "shop_refund_item"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_shop_refund_item_i_temp",
+            "fileName": "ods_sale_shop_refund_item_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_no",
+                "type": "string"
+              },
+              {
+                "name": "goods_no",
+                "type": "string"
+              },
+              {
+                "name": "less_weight",
+                "type": "double"
+              },
+              {
+                "name": "pick_weight",
+                "type": "double"
+              },
+              {
+                "name": "goods_name",
+                "type": "string"
+              },
+              {
+                "name": "quantity",
+                "type": "double"
+              },
+              {
+                "name": "qty",
+                "type": "double"
+              },
+              {
+                "name": "amount",
+                "type": "double"
+              },
+              {
+                "name": "cost",
+                "type": "double"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "activity_plat_city_goods_id",
+                "type": "bigint"
+              },
+              {
+                "name": "activity_type",
+                "type": "bigint"
+              },
+              {
+                "name": "order_item_id",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_mode_id",
+                "type": "bigint"
+              },
+              {
+                "name": "vendor_id",
+                "type": "bigint"
+              },
+              {
+                "name": "contract_no",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

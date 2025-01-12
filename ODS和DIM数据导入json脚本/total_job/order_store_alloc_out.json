@@ -1,0 +1,146 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "sqlserverreader",
+          "parameter": {
+            "username": "SA",
+            "password": "ITheima123",
+            "column": [
+              "[id]",
+              "[uid]",
+              "[order_id]",
+              "[order_source]",
+              "[goods_no]",
+              "[goods_name]",
+              "[alloc_in_store_no]",
+              "[alloc_in_store_name]",
+              "[alloc_out_store_no]",
+              "[alloc_out_store_name]",
+              "[alloc_price]",
+              "[alloc_qty]",
+              "[alloc_reason]",
+              "[alloc_amount]",
+              "[create_time]",
+              "[stock_deal_time]",
+              "[sync_time]",
+              "[vendor_no]",
+              "[vendor_name]"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "dbo.store_alloc_out"
+                ],
+                "jdbcUrl": [
+                  "jdbc:sqlserver://192.168.88.80:1433;DatabaseName=order"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_order_store_alloc_out_i_temp",
+            "fileName": "ods_order_store_alloc_out_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "uid",
+                "type": "string"
+              },
+              {
+                "name": "order_id",
+                "type": "string"
+              },
+              {
+                "name": "order_source",
+                "type": "bigint"
+              },
+              {
+                "name": "goods_no",
+                "type": "string"
+              },
+              {
+                "name": "goods_name",
+                "type": "string"
+              },
+              {
+                "name": "alloc_in_store_no",
+                "type": "string"
+              },
+              {
+                "name": "alloc_in_store_name",
+                "type": "string"
+              },
+              {
+                "name": "alloc_out_store_no",
+                "type": "string"
+              },
+              {
+                "name": "alloc_out_store_name",
+                "type": "string"
+              },
+              {
+                "name": "alloc_price",
+                "type": "double"
+              },
+              {
+                "name": "alloc_qty",
+                "type": "double"
+              },
+              {
+                "name": "alloc_reason",
+                "type": "string"
+              },
+              {
+                "name": "alloc_amount",
+                "type": "double"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "stock_deal_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "sync_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "vendor_no",
+                "type": "string"
+              },
+              {
+                "name": "vendor_name",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

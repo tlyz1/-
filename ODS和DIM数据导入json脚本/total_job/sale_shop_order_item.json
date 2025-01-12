@@ -1,0 +1,191 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`order_id`",
+              "`goods_no`",
+              "`goods_name`",
+              "`weight`",
+              "`quantity`",
+              "`unit`",
+              "`sale_qty`",
+              "`disp_price`",
+              "`pay_price`",
+              "`sale_amount`",
+              "`dis_amount`",
+              "`sale_cost`",
+              "`sale_type`",
+              "`create_time`",
+              "`complete_time`",
+              "`last_update_time`",
+              "`activity_plat_city_goods_id`",
+              "`activity_type`",
+              "`item_goods_key`",
+              "`is_deleted`",
+              "`transfer_paper_no`",
+              "`serial_no`",
+              "`is_delivery`",
+              "`goods_source_type`",
+              "`trade_mode_id`",
+              "`vendor_id`",
+              "`contract_no`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "shop_order_item"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_shop_order_item_i_temp",
+            "fileName": "ods_sale_shop_order_item_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "order_id",
+                "type": "string"
+              },
+              {
+                "name": "goods_no",
+                "type": "string"
+              },
+              {
+                "name": "goods_name",
+                "type": "string"
+              },
+              {
+                "name": "weight",
+                "type": "double"
+              },
+              {
+                "name": "quantity",
+                "type": "bigint"
+              },
+              {
+                "name": "unit",
+                "type": "string"
+              },
+              {
+                "name": "sale_qty",
+                "type": "double"
+              },
+              {
+                "name": "disp_price",
+                "type": "double"
+              },
+              {
+                "name": "pay_price",
+                "type": "double"
+              },
+              {
+                "name": "sale_amount",
+                "type": "double"
+              },
+              {
+                "name": "dis_amount",
+                "type": "double"
+              },
+              {
+                "name": "sale_cost",
+                "type": "double"
+              },
+              {
+                "name": "sale_type",
+                "type": "bigint"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "complete_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "last_update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "activity_plat_city_goods_id",
+                "type": "bigint"
+              },
+              {
+                "name": "activity_type",
+                "type": "bigint"
+              },
+              {
+                "name": "item_goods_key",
+                "type": "string"
+              },
+              {
+                "name": "is_deleted",
+                "type": "bigint"
+              },
+              {
+                "name": "transfer_paper_no",
+                "type": "string"
+              },
+              {
+                "name": "serial_no",
+                "type": "bigint"
+              },
+              {
+                "name": "is_delivery",
+                "type": "bigint"
+              },
+              {
+                "name": "goods_source_type",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_mode_id",
+                "type": "bigint"
+              },
+              {
+                "name": "vendor_id",
+                "type": "bigint"
+              },
+              {
+                "name": "contract_no",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

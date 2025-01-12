@@ -1,0 +1,181 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "sqlserverreader",
+          "parameter": {
+            "username": "SA",
+            "password": "ITheima123",
+            "column": [
+              "[id]",
+              "[uid]",
+              "[order_id]",
+              "[order_source]",
+              "[store_no]",
+              "[store_name]",
+              "[goods_no]",
+              "[goods_name]",
+              "[dc_no]",
+              "[dc_name]",
+              "[vendor_no]",
+              "[vendor_name]",
+              "[return_price]",
+              "[return_qty]",
+              "[create_time]",
+              "[stock_deal_time]",
+              "[original_order_id]",
+              "[is_fresh]",
+              "[is_entity]",
+              "[responsible_person]",
+              "[return_reason_big]",
+              "[return_desc_big]",
+              "[return_reason_small]",
+              "[return_desc_small]",
+              "[sync_time]",
+              "[batch_type_id]"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "dbo.store_return_to_dc"
+                ],
+                "jdbcUrl": [
+                  "jdbc:sqlserver://192.168.88.80:1433;DatabaseName=order"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_order_store_return_to_dc_i_temp",
+            "fileName": "ods_order_store_return_to_dc_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "uid",
+                "type": "string"
+              },
+              {
+                "name": "order_id",
+                "type": "string"
+              },
+              {
+                "name": "order_source",
+                "type": "bigint"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_name",
+                "type": "string"
+              },
+              {
+                "name": "goods_no",
+                "type": "string"
+              },
+              {
+                "name": "goods_name",
+                "type": "string"
+              },
+              {
+                "name": "dc_no",
+                "type": "string"
+              },
+              {
+                "name": "dc_name",
+                "type": "string"
+              },
+              {
+                "name": "vendor_no",
+                "type": "string"
+              },
+              {
+                "name": "vendor_name",
+                "type": "string"
+              },
+              {
+                "name": "return_price",
+                "type": "double"
+              },
+              {
+                "name": "return_qty",
+                "type": "double"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "stock_deal_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "original_order_id",
+                "type": "string"
+              },
+              {
+                "name": "is_fresh",
+                "type": "bigint"
+              },
+              {
+                "name": "is_entity",
+                "type": "bigint"
+              },
+              {
+                "name": "responsible_person",
+                "type": "string"
+              },
+              {
+                "name": "return_reason_big",
+                "type": "string"
+              },
+              {
+                "name": "return_desc_big",
+                "type": "string"
+              },
+              {
+                "name": "return_reason_small",
+                "type": "string"
+              },
+              {
+                "name": "return_desc_small",
+                "type": "string"
+              },
+              {
+                "name": "sync_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "batch_type_id",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "sqlserverreader",
+          "parameter": {
+            "username": "SA",
+            "password": "ITheima123",
+            "column": [
+              "[id]",
+              "[order_source]",
+              "[order_id]",
+              "[goods_no]",
+              "[goods_name]",
+              "[dc_no]",
+              "[dc_name]",
+              "[vendor_no]",
+              "[vendor_name]",
+              "[trade_mode_id]",
+              "[send_price]",
+              "[send_qty]",
+              "[gift_qty]",
+              "[single_tare_weight]",
+              "[tare_weight]",
+              "[freight_amount]",
+              "[tax_rate]",
+              "[create_time]",
+              "[stock_deal_time]",
+              "[collect_require_order_id]",
+              "[red_order_id]",
+              "[order_type]",
+              "[store_no]",
+              "[store_name]",
+              "[cost_price]",
+              "[delivery_type]",
+              "[order_source_type]",
+              "[sync_time]"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "dbo.dc_send"
+                ],
+                "jdbcUrl": [
+                  "jdbc:sqlserver://192.168.88.80:1433;DatabaseName=order"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_order_dc_send_i_temp",
+            "fileName": "ods_order_dc_send_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "order_source",
+                "type": "bigint"
+              },
+              {
+                "name": "order_id",
+                "type": "string"
+              },
+              {
+                "name": "goods_no",
+                "type": "string"
+              },
+              {
+                "name": "goods_name",
+                "type": "string"
+              },
+              {
+                "name": "dc_no",
+                "type": "string"
+              },
+              {
+                "name": "dc_name",
+                "type": "string"
+              },
+              {
+                "name": "vendor_no",
+                "type": "string"
+              },
+              {
+                "name": "vendor_name",
+                "type": "string"
+              },
+              {
+                "name": "trade_mode_id",
+                "type": "string"
+              },
+              {
+                "name": "send_price",
+                "type": "double"
+              },
+              {
+                "name": "send_qty",
+                "type": "double"
+              },
+              {
+                "name": "gift_qty",
+                "type": "double"
+              },
+              {
+                "name": "single_tare_weight",
+                "type": "double"
+              },
+              {
+                "name": "tare_weight",
+                "type": "double"
+              },
+              {
+                "name": "freight_amount",
+                "type": "double"
+              },
+              {
+                "name": "tax_rate",
+                "type": "double"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "stock_deal_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "collect_require_order_id",
+                "type": "string"
+              },
+              {
+                "name": "red_order_id",
+                "type": "string"
+              },
+              {
+                "name": "order_type",
+                "type": "bigint"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_name",
+                "type": "string"
+              },
+              {
+                "name": "cost_price",
+                "type": "double"
+              },
+              {
+                "name": "delivery_type",
+                "type": "bigint"
+              },
+              {
+                "name": "order_source_type",
+                "type": "bigint"
+              },
+              {
+                "name": "sync_time",
+                "type": "timestamp"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

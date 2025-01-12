@@ -1,0 +1,411 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`parent_order_no`",
+              "`order_id`",
+              "`is_split`",
+              "`platform_id`",
+              "`tid`",
+              "`source_type`",
+              "`source_name`",
+              "`store_no`",
+              "`city_id`",
+              "`city_name`",
+              "`region_code`",
+              "`order_status`",
+              "`order_status_desc`",
+              "`pay_type`",
+              "`trade_type`",
+              "`is_deleted`",
+              "`order_create_time`",
+              "`order_pay_time`",
+              "`create_time`",
+              "`print_status`",
+              "`print_time`",
+              "`stock_up_status`",
+              "`stock_up_time`",
+              "`order_type`",
+              "`express_type`",
+              "`receive_time`",
+              "`express_code`",
+              "`delivery_status`",
+              "`delivery_time`",
+              "`pick_up_status`",
+              "`qr_code`",
+              "`pick_up_time`",
+              "`complete_time`",
+              "`is_cancel`",
+              "`cancel_time`",
+              "`cancel_reason`",
+              "`refund_status`",
+              "`refund_time`",
+              "`last_update_time`",
+              "`order_total_amount`",
+              "`product_total_amount`",
+              "`pack_amount`",
+              "`delivery_amount`",
+              "`discount_amount`",
+              "`seller_discount_amount`",
+              "`platform_allowance_amount`",
+              "`real_paid_amount`",
+              "`product_discount`",
+              "`real_product_amount`",
+              "`buyer_id`",
+              "`buyer_phone`",
+              "`buyer_remark`",
+              "`r_name`",
+              "`r_tel`",
+              "`r_province`",
+              "`r_city`",
+              "`r_district`",
+              "`r_address`",
+              "`r_zipcode`",
+              "`is_tuan_head`",
+              "`store_leader_id`",
+              "`order_group_no`",
+              "`commision_amount`",
+              "`settle_amount`",
+              "`points_amount`",
+              "`pay_point`",
+              "`balance_amount`",
+              "`pay_channel_amount`",
+              "`point_amount`",
+              "`sync_erp_status`",
+              "`sync_erp_msg`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "shop_order"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_shop_order_i_temp",
+            "fileName": "ods_sale_shop_order_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "parent_order_no",
+                "type": "string"
+              },
+              {
+                "name": "order_id",
+                "type": "string"
+              },
+              {
+                "name": "is_split",
+                "type": "bigint"
+              },
+              {
+                "name": "platform_id",
+                "type": "bigint"
+              },
+              {
+                "name": "tid",
+                "type": "string"
+              },
+              {
+                "name": "source_type",
+                "type": "bigint"
+              },
+              {
+                "name": "source_name",
+                "type": "string"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "city_id",
+                "type": "bigint"
+              },
+              {
+                "name": "city_name",
+                "type": "string"
+              },
+              {
+                "name": "region_code",
+                "type": "string"
+              },
+              {
+                "name": "order_status",
+                "type": "bigint"
+              },
+              {
+                "name": "order_status_desc",
+                "type": "string"
+              },
+              {
+                "name": "pay_type",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_type",
+                "type": "string"
+              },
+              {
+                "name": "is_deleted",
+                "type": "bigint"
+              },
+              {
+                "name": "order_create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "order_pay_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "create_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "print_status",
+                "type": "bigint"
+              },
+              {
+                "name": "print_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "stock_up_status",
+                "type": "bigint"
+              },
+              {
+                "name": "stock_up_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "order_type",
+                "type": "bigint"
+              },
+              {
+                "name": "express_type",
+                "type": "bigint"
+              },
+              {
+                "name": "receive_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "express_code",
+                "type": "string"
+              },
+              {
+                "name": "delivery_status",
+                "type": "bigint"
+              },
+              {
+                "name": "delivery_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "pick_up_status",
+                "type": "bigint"
+              },
+              {
+                "name": "qr_code",
+                "type": "string"
+              },
+              {
+                "name": "pick_up_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "complete_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "is_cancel",
+                "type": "bigint"
+              },
+              {
+                "name": "cancel_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "cancel_reason",
+                "type": "string"
+              },
+              {
+                "name": "refund_status",
+                "type": "bigint"
+              },
+              {
+                "name": "refund_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "last_update_time",
+                "type": "timestamp"
+              },
+              {
+                "name": "order_total_amount",
+                "type": "double"
+              },
+              {
+                "name": "product_total_amount",
+                "type": "double"
+              },
+              {
+                "name": "pack_amount",
+                "type": "double"
+              },
+              {
+                "name": "delivery_amount",
+                "type": "double"
+              },
+              {
+                "name": "discount_amount",
+                "type": "double"
+              },
+              {
+                "name": "seller_discount_amount",
+                "type": "double"
+              },
+              {
+                "name": "platform_allowance_amount",
+                "type": "double"
+              },
+              {
+                "name": "real_paid_amount",
+                "type": "double"
+              },
+              {
+                "name": "product_discount",
+                "type": "double"
+              },
+              {
+                "name": "real_product_amount",
+                "type": "double"
+              },
+              {
+                "name": "buyer_id",
+                "type": "bigint"
+              },
+              {
+                "name": "buyer_phone",
+                "type": "string"
+              },
+              {
+                "name": "buyer_remark",
+                "type": "string"
+              },
+              {
+                "name": "r_name",
+                "type": "string"
+              },
+              {
+                "name": "r_tel",
+                "type": "string"
+              },
+              {
+                "name": "r_province",
+                "type": "string"
+              },
+              {
+                "name": "r_city",
+                "type": "string"
+              },
+              {
+                "name": "r_district",
+                "type": "string"
+              },
+              {
+                "name": "r_address",
+                "type": "string"
+              },
+              {
+                "name": "r_zipcode",
+                "type": "string"
+              },
+              {
+                "name": "is_tuan_head",
+                "type": "bigint"
+              },
+              {
+                "name": "store_leader_id",
+                "type": "bigint"
+              },
+              {
+                "name": "order_group_no",
+                "type": "string"
+              },
+              {
+                "name": "commision_amount",
+                "type": "double"
+              },
+              {
+                "name": "settle_amount",
+                "type": "double"
+              },
+              {
+                "name": "points_amount",
+                "type": "double"
+              },
+              {
+                "name": "pay_point",
+                "type": "bigint"
+              },
+              {
+                "name": "balance_amount",
+                "type": "double"
+              },
+              {
+                "name": "pay_channel_amount",
+                "type": "double"
+              },
+              {
+                "name": "point_amount",
+                "type": "double"
+              },
+              {
+                "name": "sync_erp_status",
+                "type": "bigint"
+              },
+              {
+                "name": "sync_erp_msg",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

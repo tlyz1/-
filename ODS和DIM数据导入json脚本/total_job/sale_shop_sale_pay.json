@@ -1,0 +1,126 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`store_no`",
+              "`store_name`",
+              "`trade_date`",
+              "`member_id`",
+              "`zt_id`",
+              "`trade_order_id`",
+              "`pay_order_id`",
+              "`order_no`",
+              "`pay_channel`",
+              "`pay_channel_name`",
+              "`trade_order_type`",
+              "`trade_order_type_name`",
+              "`pay_amount`",
+              "`trade_merchant`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "shop_sale_pay"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_shop_sale_pay_i_temp",
+            "fileName": "ods_sale_shop_sale_pay_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_name",
+                "type": "string"
+              },
+              {
+                "name": "trade_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "member_id",
+                "type": "bigint"
+              },
+              {
+                "name": "zt_id",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_order_id",
+                "type": "string"
+              },
+              {
+                "name": "pay_order_id",
+                "type": "string"
+              },
+              {
+                "name": "order_no",
+                "type": "string"
+              },
+              {
+                "name": "pay_channel",
+                "type": "string"
+              },
+              {
+                "name": "pay_channel_name",
+                "type": "string"
+              },
+              {
+                "name": "trade_order_type",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_order_type_name",
+                "type": "string"
+              },
+              {
+                "name": "pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "trade_merchant",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

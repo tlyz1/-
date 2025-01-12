@@ -1,0 +1,181 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "byte": 1048576
+      },
+      "errorLimit": {
+        "record": 0,
+        "percentage": 0.02
+      }
+    },
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "username": "root",
+            "password": "123456",
+            "column": [
+              "`id`",
+              "`order_no`",
+              "`order_id`",
+              "`store_no`",
+              "`store_name`",
+              "`trade_date`",
+              "`pay_date`",
+              "`deal_date`",
+              "`pos_no`",
+              "`ser_id`",
+              "`trade_id`",
+              "`parent_order_sn`",
+              "`source_order_sn`",
+              "`source_type`",
+              "`create_time`",
+              "`business_code`",
+              "`pay_type_id`",
+              "`third_party_id`",
+              "`third_party_name`",
+              "`pay_amount`",
+              "`third_trade_no`",
+              "`trade_no`",
+              "`source_trade_no`",
+              "`item`",
+              "`ratio`",
+              "`memo`"
+            ],
+            "splitPk": "",
+            "connection": [
+              {
+                "table": [
+                  "store_sale_pay"
+                ],
+                "jdbcUrl": [
+                  "jdbc:mysql://192.168.88.80:3306/sale"
+                ]
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "defaultFS": "hdfs://hadoop01:8020",
+            "fileType": "orc",
+            "path": "/user/hive/warehouse/ods.db/ods_sale_store_sale_pay_i_temp",
+            "fileName": "ods_sale_store_sale_pay_i_temp",
+            "writeMode": "truncate",
+            "fieldDelimiter": ",",
+            "column": [
+              {
+                "name": "id",
+                "type": "bigint"
+              },
+              {
+                "name": "order_no",
+                "type": "string"
+              },
+              {
+                "name": "order_id",
+                "type": "bigint"
+              },
+              {
+                "name": "store_no",
+                "type": "string"
+              },
+              {
+                "name": "store_name",
+                "type": "string"
+              },
+              {
+                "name": "trade_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "pay_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "deal_date",
+                "type": "timestamp"
+              },
+              {
+                "name": "pos_no",
+                "type": "string"
+              },
+              {
+                "name": "ser_id",
+                "type": "bigint"
+              },
+              {
+                "name": "trade_id",
+                "type": "bigint"
+              },
+              {
+                "name": "parent_order_sn",
+                "type": "string"
+              },
+              {
+                "name": "source_order_sn",
+                "type": "string"
+              },
+              {
+                "name": "source_type",
+                "type": "bigint"
+              },
+              {
+                "name": "create_time",
+                "type": "string"
+              },
+              {
+                "name": "business_code",
+                "type": "string"
+              },
+              {
+                "name": "pay_type_id",
+                "type": "string"
+              },
+              {
+                "name": "third_party_id",
+                "type": "string"
+              },
+              {
+                "name": "third_party_name",
+                "type": "string"
+              },
+              {
+                "name": "pay_amount",
+                "type": "double"
+              },
+              {
+                "name": "third_trade_no",
+                "type": "string"
+              },
+              {
+                "name": "trade_no",
+                "type": "string"
+              },
+              {
+                "name": "source_trade_no",
+                "type": "string"
+              },
+              {
+                "name": "item",
+                "type": "bigint"
+              },
+              {
+                "name": "ratio",
+                "type": "double"
+              },
+              {
+                "name": "memo",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
